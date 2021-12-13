@@ -4,7 +4,7 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    HelloWorld: typeof import('./components/HelloWorld.vue')['default']
+    CharacterItem: typeof import('./components/CharacterItem.vue')['default']
   }
 }
 

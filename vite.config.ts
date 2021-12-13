@@ -8,13 +8,13 @@ import WindiCSS from 'vite-plugin-windicss'
 export default defineConfig({
 	resolve: {
 		alias: {
-			'~/': `${path.resolve(__dirname, 'src')}/`,
+			'@/': `${path.resolve(__dirname, 'src')}/`,
 		},
 	},
 	plugins: [
 		vue(),
 		AutoImport({
-			imports: ['vue', 'vue-router', '@vueuse/head', '@vueuse/core'],
+			imports: ['vue'],
 			dts: 'src/auto-imports.d.ts',
 		}),
 		Components({
