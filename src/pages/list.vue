@@ -1,31 +1,8 @@
-<script lang="ts" setup>
-import { usePeopleResource } from '../logic/api'
-import CharacterItem from '../components/CharacterItem.vue'
-import { isClient, useWindowScroll } from '@vueuse/core'
-
-const { characters, isFetching, nextPage } = usePeopleResource()
-
-const { y: scrollY } = useWindowScroll()
-
-watch(scrollY, y => {
-	if (!isClient) return
-	if (scrollY.value + window.innerHeight + 100 >= document.body.offsetHeight)
-		nextPage()
-})
-</script>
+<script lang="ts" setup></script>
 
 <template>
-	<div>list</div>
-	<div>{{ isFetching ? 'fetching' : 'not fetching' }}</div>
-	<button @click="nextPage" class="bg-gray-800 p-2 rounded-lg">Fetch more</button>
-	<div v-if="characters.length">
-		<h4>Results:</h4>
-		<ol class="space-y-8">
-			<li v-for="character in characters">
-				<CharacterItem :name="character.name" />
-			</li>
-		</ol>
-	</div>
+   <h1>STAR WARS</h1>
+   <CharactersList />
 </template>
 
 <style lang="scss" scoped></style>

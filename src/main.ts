@@ -11,7 +11,7 @@ export const createApp = ViteSSG(
 	{
 		routes: [
 			{ path: '/', component: () => import('./pages/list.vue') },
-			{ path: '/about', component: () => import('./pages/details.vue') },
+			{ path: '/:uid', component: () => import('./pages/details.vue') },
 		],
 	},
 	ctx => {
