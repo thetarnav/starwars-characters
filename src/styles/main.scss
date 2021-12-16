@@ -2,7 +2,7 @@
    color-scheme: dark;
 }
 body {
-   @apply bg-black text-yellow;
+   @apply bg-black text-yellow overflow-y-scroll;
    font-family: "Gothic A1", sans-serif;
    &::before {
       content: "";

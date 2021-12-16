@@ -1,4 +1,5 @@
 import path from 'path'
+import fetch from 'node-fetch'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
@@ -27,6 +28,21 @@ export default defineConfig({
 	server: {
 		fs: {
 			strict: true,
+		},
+	},
+	ssgOptions: {
+		script: 'async',
+		includedRoutes: async () => {
+			const res = await fetch(
+				'https://www.swapi.tech/api/people/?page=1&limit=1',
+			)
+			const { total_records } = (await res.json()) as any
+			const peopleRoutes = Array.from(
+				{ length: total_records },
+				(_, i) => `/${i + 1}`,
+			)
+
+			return ['/', ...peopleRoutes]
 		},
 	},
 	optimizeDeps: {

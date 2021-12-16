@@ -14,7 +14,6 @@ export interface CharactersResponse {
 export interface CharacterItem {
 	uid: string
 	name: string
-	url: string
 }
 
 export interface CharacterDetailsResponse {

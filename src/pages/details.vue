@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import pick from 'just-pick'
 import mix from 'mix-color'
 import { useCharacterDetails } from '@/modules/details'
+import { objectPick, until } from '@vueuse/core'
 
 const { params } = useRoute()
 const { details, homeworld } = useCharacterDetails(params.uid + '')
@@ -17,8 +17,7 @@ const planetColor = () =>
 
 const tableContent = computed(() =>
 	details.value
-		? pick(
-				details.value,
+		? objectPick(details.value, [
 				'birth_year',
 				'gender',
 				'height',
@@ -26,9 +25,13 @@ const tableContent = computed(() =>
 				'hair_color',
 				'eye_color',
 				'skin_color',
-		  )
+		  ])
 		: {},
 )
+
+onServerPrefetch(async () => {
+	await until(() => details.value).toBeTruthy()
+})
 </script>
 
 <template>
@@ -55,7 +58,9 @@ const tableContent = computed(() =>
 					class="absolute -top-48 w-64 h-64 rounded-full opacity-50"
 					:style="{
 						'background-color': planetColor(),
-						transform: `scale(${Number(homeworld.diameter) / 12000})`,
+						transform: `scale(${
+							Math.min(Number(homeworld.diameter), 20000) / 12000
+						})`,
 					}"
 				></div>
 			</div>

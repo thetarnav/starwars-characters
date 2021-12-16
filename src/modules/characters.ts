@@ -1,9 +1,10 @@
 import { useFetch } from '@/logic/useFetch'
 import { CharactersResponse, CharacterItem } from '@/types'
+import { objectPick, useStorage } from '@vueuse/core'
 
-const characters = ref<CharacterItem[]>([])
-const reachedEnd = ref(false)
-const page = ref(1)
+const characters = useStorage<CharacterItem[]>('character-list', [])
+const reachedEnd = useStorage('character-list-reached-end', false)
+const page = useStorage('character-list-page', 1)
 const url = computed(
 	() =>
 		`${import.meta.env.VITE_APP_API_URL}/people/?page=${page.value}&limit=12`,
@@ -23,15 +24,14 @@ export function useCharacterList() {
 	watch(data, data => {
 		if (data) {
 			if (!data.next) reachedEnd.value = true
-			characters.value.push(...data.results)
+			const list = data.results.map(i => objectPick(i, ['name', 'uid']))
+			characters.value.push(...list)
 		}
 	})
 
 	const fetchNext = () => {
-		console.log('NEXT')
-
 		if (reachedEnd.value || isFetching.value) return
-		page.value++
+		if (page.value) page.value++
 	}
 
 	return { characters, isFetching, reachedEnd, fetchNext }
