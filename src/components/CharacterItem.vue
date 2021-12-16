@@ -9,7 +9,7 @@ const [first, last] = splitName(props.name)
 <template>
 	<RouterLink
 		:to="props.uid"
-		class="w-full grid grid-cols-2 gap-x-4 lg:gap-x-8 font-black text-4xl lg:text-8xl break-words overflow-hidden"
+		class="w-full p-2 grid grid-cols-2 gap-x-4 lg:gap-x-8 font-black text-4xl lg:text-8xl break-words overflow-hidden"
 	>
 		<div class="text-right">{{ first }}</div>
 		<div>{{ last }}</div>

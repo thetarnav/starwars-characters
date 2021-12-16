@@ -204,7 +204,7 @@
     "@vue/compiler-dom" "3.2.26"
     "@vue/shared" "3.2.26"
 
-"@vue/devtools-api@^6.0.0-beta.18", "@vue/devtools-api@^6.0.0-beta.20.1":
+"@vue/devtools-api@^6.0.0-beta.18":
   version "6.0.0-beta.20.1"
   resolved "https://registry.yarnpkg.com/@vue/devtools-api/-/devtools-api-6.0.0-beta.20.1.tgz#5b499647e929c35baf2a66a399578f9aa4601142"
   integrity sha512-R2rfiRY+kZugzWh9ZyITaovx+jpU4vgivAEAiz80kvh3yviiTU3CBuGuyWpSwGz9/C7TkSWVM/FtQRGlZ16n8Q==
@@ -1086,6 +1086,11 @@ jstransformer@1.0.0:
     is-promise "^2.0.0"
     promise "^7.0.1"
 
+just-pick@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/just-pick/-/just-pick-4.0.1.tgz#cf8571885ef9260c4bd3b4ea4b479f1ef721f797"
+  integrity sha512-8+xh2htMkCqrOzh1hhNF1RYh3WbC6JbdRrA8rPMQcvd/pw2DT5wgIsQKfwh/qwc/CJ0Lev95c1e0jlJHN9T5Gw==
+
 klona@^2.0.4:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.5.tgz#d166574d90076395d9963aa7a928fabb8d76afbc"
@@ -1161,6 +1166,11 @@ minimatch@^3.0.4:
   integrity sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA==
   dependencies:
     brace-expansion "^1.1.7"
+
+mix-color@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/mix-color/-/mix-color-1.1.2.tgz#aa115c74152c71d59698e7bcfa9e45da8a03a8a9"
+  integrity sha512-dl0x92sQ+cMM37GVo5MpLJfPbLxFhyqTrf6paYp/k+1rRPK1aPPPI7xajEI+GtU+eWnCsAW2Bg1q0rH1gLbI7w==
 
 mlly@^0.2.2:
   version "0.2.10"
@@ -1244,14 +1254,6 @@ picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.2, picomatch@^2.2.3:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.0.tgz#f1f061de8f6a4bf022892e2d128234fb98302972"
   integrity sha512-lY1Q/PiJGC2zOv/z391WOTD+Z02bCgsFfvxoXXf6h7kv9o+WmsmzYqrAwY63sNgOxE4xEdq0WyUnXfKeBrSvYw==
-
-pinia@^2.0.6:
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/pinia/-/pinia-2.0.6.tgz#db7ebccd459ef8020d0c528d85be7930e0f4edd0"
-  integrity sha512-01mP4+KapIcTNSYLhQESy6GW0N8vY5wX3UqOwkC87e7DPjEusNJ8bENrKqdvZaRHbB2rDMOONeAbwMa3+n1/rw==
-  dependencies:
-    "@vue/devtools-api" "^6.0.0-beta.20.1"
-    vue-demi "*"
 
 postcss@^8.1.10, postcss@^8.3.11:
   version "8.4.5"

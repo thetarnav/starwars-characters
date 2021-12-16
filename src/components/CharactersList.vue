@@ -12,7 +12,15 @@ const checkScroll = () => {
 	)
 		fetchNext()
 }
-watch([y, characters], checkScroll, { deep: true })
+watch(y, checkScroll)
+watch(
+	characters,
+	async () => {
+		await nextTick()
+		checkScroll()
+	},
+	{ deep: true },
+)
 </script>
 
 <template>
