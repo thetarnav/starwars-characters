@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import mix from 'mix-color'
 import { useCharacterDetails } from '@/modules/details'
-import { objectPick, until } from '@vueuse/core'
+import { objectPick } from '@vueuse/core'
+import { fillNewObject } from '@/logic/utils'
 
 const { params } = useRoute()
 const { details, homeworld } = useCharacterDetails(params.uid + '')
@@ -15,23 +16,20 @@ const planetColor = () =>
 		  )
 		: 'rgb(251, 146, 60)'
 
-const tableContent = computed(() =>
-	details.value
-		? objectPick(details.value, [
-				'birth_year',
-				'gender',
-				'height',
-				'mass',
-				'hair_color',
-				'eye_color',
-				'skin_color',
-		  ])
-		: {},
-)
+const tableKays = [
+	'birth_year',
+	'gender',
+	'height',
+	'mass',
+	'hair_color',
+	'eye_color',
+	'skin_color',
+]
 
-onServerPrefetch(async () => {
-	await until(() => details.value).toBeTruthy()
-})
+const tableContent = () =>
+	details.value
+		? objectPick(details.value, tableKays as any)
+		: fillNewObject(...tableKays)
 </script>
 
 <template>
@@ -39,21 +37,41 @@ onServerPrefetch(async () => {
 		<router-link to="/"> GO BACK </router-link>
 	</div>
 	<main
-		v-if="details"
-		class="px-8 py-28 md:px-16 lg:px-24 max-w-screen-md mx-auto overflow-hidden"
+		class="
+			px-8
+			py-28
+			md:px-16
+			lg:px-24
+			max-w-screen-md
+			mx-auto
+			overflow-hidden
+		"
 	>
-		<h1 class="text-6xl sm:text-8xl font-bold break-words">
-			{{ details.name }}
-		</h1>
+		<Skeleton :when="!!details" class="w-full h-28">
+			<h1 class="text-6xl sm:text-8xl font-bold break-words">
+				{{ (details as any).name }}
+			</h1>
+		</Skeleton>
 		<figure
-			v-if="homeworld"
-			class="mt-32 pb-8 mb-12 grid grid-cols-2 items-end border-b border-yellow border-opacity-20"
+			class="
+				mt-32
+				pb-8
+				mb-12
+				grid grid-cols-2
+				items-end
+				border-b border-yellow border-opacity-20
+			"
 		>
 			<figcaption>
 				<p class="uppercase font-bold mb-4 opacity-80">Home Planet</p>
-				<h3 class="text-5xl font-bold">{{ homeworld.name }}</h3>
+				<Skeleton :when="!!homeworld" class="w-52 h-12">
+					<h3 class="text-5xl font-bold">{{ (homeworld as any).name }}</h3>
+				</Skeleton>
 			</figcaption>
-			<div class="relative">
+			<div
+				v-if="homeworld"
+				class="relative animate-fade-in animate-duration-500"
+			>
 				<div
 					class="absolute -top-48 w-64 h-64 rounded-full opacity-50"
 					:style="{
@@ -66,7 +84,7 @@ onServerPrefetch(async () => {
 			</div>
 		</figure>
 		<div class="py-16">
-			<ListTable :data="tableContent" />
+			<ListTable :data="tableContent()" />
 		</div>
 		<router-link to="/">Go back to the characters list</router-link>
 	</main>

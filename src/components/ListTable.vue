@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { snakeToTitle } from '@/logic/snakeToTitle'
+import { snakeToTitle } from '@/logic/utils'
 
 const props = defineProps<{
 	data: Record<any, any>
@@ -17,7 +17,9 @@ const props = defineProps<{
 					{{ snakeToTitle(key + '') }}
 				</th>
 				<td class="py-4 text-left uppercase tracking-wide">
-					{{ value }}
+					<Skeleton :when="!!value" class="h-6 w-16">
+						{{ value }}
+					</Skeleton>
 				</td>
 			</tr>
 		</tbody>

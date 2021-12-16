@@ -7,6 +7,7 @@ declare module 'vue' {
     CharacterItem: typeof import('./components/CharacterItem.vue')['default']
     CharactersList: typeof import('./components/CharactersList.vue')['default']
     ListTable: typeof import('./components/ListTable.vue')['default']
+    Skeleton: typeof import('./components/Skeleton.vue')['default']
   }
 }
 
