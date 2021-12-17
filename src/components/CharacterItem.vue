@@ -4,6 +4,8 @@ import { splitName } from '@/logic/utils'
 
 const props = defineProps<{ name: string; uid: string }>()
 const [first, last] = splitName(props.name)
+
+const isSingle = computed(() => !last.length)
 </script>
 
 <template>
@@ -12,18 +14,22 @@ const [first, last] = splitName(props.name)
 		class="
 			w-full
 			p-2
-			grid grid-cols-2
-			gap-x-4
-			lg:gap-x-8
 			font-black
-			text-4xl
+			text-3xl
+			md:text-5xl
 			lg:text-8xl
 			break-words
 			overflow-hidden
+			block
 		"
 	>
-		<div class="text-right">{{ first }}</div>
-		<div>{{ last }}</div>
+		<div v-if="isSingle" class="flex justify-center">
+			<div>{{ first }}</div>
+		</div>
+		<div v-else class="grid grid-cols-2 gap-x-4 lg:gap-x-8">
+			<div class="text-right">{{ first }}</div>
+			<div>{{ last }}</div>
+		</div>
 	</RouterLink>
 </template>
 

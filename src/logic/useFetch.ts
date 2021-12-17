@@ -1,5 +1,5 @@
 import { get, MaybeRef } from '@vueuse/core'
-import { Ref } from 'vue'
+import { Ref, ref, watch } from 'vue'
 
 export function useFetch<T>(
 	url: MaybeRef<string | undefined>,
@@ -18,7 +18,6 @@ export function useFetch<T>(
 	const fetchData = async () => {
 		const _url = get(url)
 		if (isFetching.value || !_url) return
-		console.log('FETCHING', _url)
 		isFetching.value = true
 
 		try {

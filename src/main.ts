@@ -6,13 +6,27 @@ import 'virtual:windi-components.css'
 import './styles/main.scss'
 import 'virtual:windi-utilities.css'
 
+export const savedMainPageScrollPosition = ref(0)
+
 const app = createApp(App)
 const router = createRouter({
 	routes: [
-		{ path: '/', component: () => import('./pages/list.vue') },
-		{ path: '/:uid', component: () => import('./pages/details.vue') },
+		{ name: 'List', path: '/', component: () => import('./pages/list.vue') },
+		{
+			name: 'Details',
+			path: '/:uid',
+			component: () => import('./pages/details.vue'),
+		},
 	],
 	history: createWebHistory(),
+	scrollBehavior(to, from, saved) {
+		if (to.name === 'List') {
+			return saved || { top: savedMainPageScrollPosition.value }
+		} else {
+			if (typeof from.name === 'undefined') return saved || { top: 0 }
+			else return { top: 0 }
+		}
+	},
 })
 app.use(router)
 app.mount('#app')

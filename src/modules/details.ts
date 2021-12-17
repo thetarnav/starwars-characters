@@ -15,7 +15,7 @@ export function useCharacterDetails(uid: string) {
 	if (!uid || typeof uid !== 'string')
 		abortOperation('Character UID was not provided')
 
-	const url = `${import.meta.env.VITE_APP_API_URL}/people/${uid}`
+	const url = `https://www.swapi.tech/api/people/${uid}`
 	const [data, { onFetchError }] = useFetch<CharacterDetailsResponse>(url)
 	const details = computed(() => data.value?.result?.properties)
 

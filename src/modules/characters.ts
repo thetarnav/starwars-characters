@@ -6,8 +6,7 @@ const characters = useStorage<CharacterItem[]>('character-list', [])
 const reachedEnd = useStorage('character-list-reached-end', false)
 const page = useStorage('character-list-page', 1)
 const url = computed(
-	() =>
-		`${import.meta.env.VITE_APP_API_URL}/people/?page=${page.value}&limit=12`,
+	() => `https://www.swapi.tech/api/people/?page=${page.value}&limit=12`,
 )
 
 export function useCharacterList() {
