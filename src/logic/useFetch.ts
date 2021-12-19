@@ -1,5 +1,5 @@
 import { get, MaybeRef } from '@vueuse/core'
-import { Ref, ref, watch } from 'vue'
+import { Ref } from 'vue'
 
 export function useFetch<T>(
 	url: MaybeRef<string | undefined>,
