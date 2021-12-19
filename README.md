@@ -1,4 +1,4 @@
-# Star Wars Caracters
+# Star Wars Characters
 
 Website: [**starwars-characters-list.netlify.app**](https://starwars-characters-list.netlify.app)
 
