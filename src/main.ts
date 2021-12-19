@@ -1,5 +1,6 @@
 import App from './App.vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import { createHead } from '@vueuse/head'
 
 import 'virtual:windi-base.css'
 import 'virtual:windi-components.css'
@@ -29,4 +30,5 @@ const router = createRouter({
 	},
 })
 app.use(router)
+app.use(createHead())
 app.mount('#app')

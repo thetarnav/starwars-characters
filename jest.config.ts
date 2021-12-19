@@ -1,10 +1,11 @@
 import { Config } from '@jest/types'
 
 const config: Config.InitialOptions = {
+	testEnvironment: 'jsdom',
 	moduleFileExtensions: ['js', 'ts', 'json', 'vue'],
 	transform: {
 		'^.+\\.ts$': 'ts-jest',
-		'^.+\\.vue$': 'vue-jest',
+		'^.+\\.vue$': '@vue/vue3-jest',
 	},
 	moduleNameMapper: {
 		'^@/(.*)$': '<rootDir>/src/$1',

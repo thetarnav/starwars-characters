@@ -20,6 +20,7 @@
     "@types/node": "^16.11.12",
     "@vitejs/plugin-vue": "^2.0.0",
     "@vue/test-utils": "^2.0.0-rc.17",
+    "@vue/vue3-jest": "^27.0.0-alpha.4",
     "flush-promises": "^1.0.2",
     "jest": "^27.4.5",
     "sass": "^1.45.0",
@@ -31,7 +32,6 @@
     "unplugin-vue-components": "^0.17.9",
     "vite": "^2.7.3",
     "vite-plugin-windicss": "^1.5.4",
-    "vue-jest": "^5.0.0-alpha.10",
     "vue-tsc": "^0.29.8"
   }
 }

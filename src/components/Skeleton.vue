@@ -13,7 +13,7 @@ defineProps<{
 <template>
 	<Transition name="fade" appear mode="out-in">
 		<slot v-if="when" />
-		<div v-else v-bind="$attrs"></div>
+		<div data-test="skeleton" v-else v-bind="$attrs"></div>
 	</Transition>
 </template>
 

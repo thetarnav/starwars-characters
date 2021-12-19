@@ -3,6 +3,7 @@ import mix from 'mix-color'
 import { useCharacterDetails } from '@/modules/details'
 import { objectPick } from '@vueuse/core'
 import { fillNewObject } from '@/logic/utils'
+import { useHead } from '@vueuse/head'
 
 const { params } = useRoute()
 const { details, homeworld } = useCharacterDetails(params.uid + '')
@@ -30,6 +31,14 @@ const tableContent = () =>
 	details.value
 		? objectPick(details.value, tableKays as any)
 		: fillNewObject(...tableKays)
+
+useHead({
+	title: computed(() =>
+		details.value
+			? details.value.name + ' — Star Wars Characters'
+			: 'Star Wars Characters',
+	),
+})
 </script>
 
 <template>

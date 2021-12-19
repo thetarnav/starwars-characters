@@ -1,12 +1,17 @@
 <script lang="ts" setup>
 import { savedMainPageScrollPosition } from '@/main'
 import { useEventListener } from '@vueuse/core'
+import { useHead } from '@vueuse/head'
 
 useEventListener(
 	window,
 	'scroll',
 	() => (savedMainPageScrollPosition.value = window.scrollY),
 )
+
+useHead({
+	title: 'Star Wars Characters',
+})
 </script>
 
 <template>

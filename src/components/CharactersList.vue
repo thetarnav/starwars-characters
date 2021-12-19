@@ -26,7 +26,7 @@ watch(
 
 <template>
 	<div v-if="characters.length">
-		<ol class="space-y-2 md:space-y-4 lg:space-y-8">
+		<ol class="md:space-y-4 lg:space-y-8">
 			<li v-for="character in characters" :key="character.uid">
 				<CharacterItem :name="character.name" :uid="character.uid" />
 			</li>
