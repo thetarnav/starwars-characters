@@ -6,8 +6,10 @@ declare module 'vue' {
   export interface GlobalComponents {
     CharacterItem: typeof import('./components/CharacterItem.vue')['default']
     CharactersList: typeof import('./components/CharactersList.vue')['default']
+    GithubIcon: typeof import('./components/GithubIcon.vue')['default']
     ListTable: typeof import('./components/ListTable.vue')['default']
     Skeleton: typeof import('./components/Skeleton.vue')['default']
+    Topbar: typeof import('./components/Topbar.vue')['default']
   }
 }
 

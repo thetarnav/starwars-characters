@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { isClient, until, useWindowScroll } from '@vueuse/core'
+import { isClient, useWindowScroll } from '@vueuse/core'
 import { useCharacterList } from '@/modules/characters'
 
 const { characters, fetchNext } = useCharacterList()
@@ -22,10 +22,6 @@ watch(
 	},
 	{ deep: true },
 )
-
-onServerPrefetch(async () => {
-	await until(() => characters.value.length).toBeTruthy()
-})
 </script>
 
 <template>

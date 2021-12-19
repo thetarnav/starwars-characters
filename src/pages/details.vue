@@ -33,63 +33,58 @@ const tableContent = () =>
 </script>
 
 <template>
-	<div>
-		<div class="fixed top-2 left-2">
-			<router-link to="/"> GO BACK </router-link>
-		</div>
-		<main
+	<main
+		class="
+			px-8
+			py-28
+			md:px-16
+			lg:px-24
+			max-w-screen-md
+			mx-auto
+			overflow-hidden
+		"
+	>
+		<Skeleton :when="!!details" class="w-full h-28">
+			<h1 class="text-6xl sm:text-8xl font-bold break-words">
+				{{ (details as any).name }}
+			</h1>
+		</Skeleton>
+		<figure
 			class="
-				px-8
-				py-28
-				md:px-16
-				lg:px-24
-				max-w-screen-md
-				mx-auto
-				overflow-hidden
+				mt-32
+				pb-8
+				mb-12
+				grid grid-cols-2
+				items-end
+				border-b border-yellow border-opacity-20
 			"
 		>
-			<Skeleton :when="!!details" class="w-full h-28">
-				<h1 class="text-6xl sm:text-8xl font-bold break-words">
-					{{ (details as any).name }}
-				</h1>
-			</Skeleton>
-			<figure
-				class="
-					mt-32
-					pb-8
-					mb-12
-					grid grid-cols-2
-					items-end
-					border-b border-yellow border-opacity-20
-				"
+			<figcaption>
+				<p class="uppercase font-bold mb-4 opacity-80">Home Planet</p>
+				<Skeleton :when="!!homeworld" class="w-52 h-12">
+					<h3 class="text-5xl font-bold">
+						{{ (homeworld as any).name }}
+					</h3>
+				</Skeleton>
+			</figcaption>
+			<div
+				v-if="homeworld"
+				class="relative animate-fade-in animate-duration-500"
 			>
-				<figcaption>
-					<p class="uppercase font-bold mb-4 opacity-80">Home Planet</p>
-					<Skeleton :when="!!homeworld" class="w-52 h-12">
-						<h3 class="text-5xl font-bold">
-							{{ (homeworld as any).name }}
-						</h3>
-					</Skeleton>
-				</figcaption>
 				<div
-					v-if="homeworld"
-					class="relative animate-fade-in animate-duration-500"
-				>
-					<div
-						class="absolute -top-48 w-64 h-64 rounded-full opacity-50"
-						:style="{
-							'background-color': planetColor(),
-							transform: `scale(${
-								Math.min(Number(homeworld.diameter), 20000) / 12000
-							})`,
-						}"
-					></div>
-				</div>
-			</figure>
-			<div class="py-16">
-				<ListTable :data="tableContent()" />
+					class="absolute -z-1 -top-48 w-64 h-64 rounded-full opacity-50"
+					:style="{
+						'background-color': planetColor(),
+						transform: `scale(${
+							Math.min(Number(homeworld.diameter), 20000) / 12000
+						})`,
+					}"
+				></div>
 			</div>
-			<router-link to="/">Go back to the characters list</router-link>
-		</main>
-	</div>
+		</figure>
+		<div class="py-16">
+			<ListTable :data="tableContent()" />
+		</div>
+		<router-link to="/">Go back to the characters list</router-link>
+	</main>
 </template>

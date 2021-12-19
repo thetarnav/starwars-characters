@@ -2,8 +2,7 @@
    color-scheme: dark;
 }
 body {
-   @apply bg-black text-yellow overflow-y-scroll min-h-screen;
-   font-family: "Gothic A1", sans-serif;
+   @apply bg-black text-yellow overflow-y-scroll min-h-screen font-normal;
    &::before {
       content: "";
       @apply fixed inset-0 -z-1 pointer-events-none opacity-80;
@@ -17,6 +16,7 @@ a {
    @apply hover:underline;
 }
 
+// transition: fade
 .fade {
    &-enter-active,
    &-leave-active {

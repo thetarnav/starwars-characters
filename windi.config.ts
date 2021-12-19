@@ -6,6 +6,10 @@ export default defineConfig({
 	attributify: true,
 	plugins: [typography()],
 	theme: {
+		fontFamily: {
+			normal: '"Gothic A1", sans-serif',
+			display: "'starjedi', 'Gothic A1', sans-serif",
+		},
 		extend: {
 			colors: {
 				blue: {
